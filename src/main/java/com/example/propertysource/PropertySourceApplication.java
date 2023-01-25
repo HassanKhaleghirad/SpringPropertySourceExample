@@ -12,19 +12,19 @@ public class PropertySourceApplication {
 
     public static void main(String[] args)
        throws SQLException {
-            AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-            context.scan("com.example.propertysource");
-            context.refresh();
 
-            DBConnection dbConnection = context.getBean(DBConnection.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.scan("com.example.propertysource");
+        context.refresh();
 
-            Connection con = dbConnection.getConnection();
+        DBConnection dbConnection = context.getBean(DBConnection.class);
 
-            System.out.println(con.getMetaData().getDatabaseProductName());
-            System.out.println(con.getMetaData().getDatabaseProductVersion());
+        Connection con = dbConnection.getConnection();
 
-            // close the spring context
-            context.close();
+        System.out.println(con.getMetaData().getDatabaseProductName());
+        System.out.println(con.getMetaData().getDatabaseProductVersion());
+        context.close();
+
         }
 
 
